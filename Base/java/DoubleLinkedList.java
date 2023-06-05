@@ -14,6 +14,45 @@ public class DoubleLinkedList<T> {
     DoubleLinkedList() {}
 
     /**
+     * Function adds the given item to the front of the list
+     * @return the index in which the item is saved
+    */
+    public int addFirst(T object){
+        Node<T> newNode= new Node<>(object, null, first);
+        Node<T> oldNode = first;
+        if (last == null){
+            last = newNode;
+        }
+        if (first == null){
+            first = newNode;
+        } else {
+            oldNode.back = newNode;
+            first = newNode;
+        }
+        size++;
+        return 0;
+    }
+
+    /**
+     * Function adds the given item to the end of the list
+     * @return the index in which the item is saved
+    */
+    public int addLast(T object){
+        Node<T> newNode= new Node<>(object, last, null);
+        Node<T> oldNode = last;
+        if (first == null){
+            first = newNode;
+        }
+        if (last == null){
+            last = newNode;
+        } else {
+            oldNode.next = newNode;
+            last = newNode;
+        }
+        return size++;
+    }
+
+    /**
      * Function splits the list in 2 and depending on the requested index and list size 
      * decides to loop from the front or from the back
      * @throws IndexOutOfBoundsException when the list is empty
