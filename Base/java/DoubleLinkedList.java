@@ -14,6 +14,37 @@ public class DoubleLinkedList<T> {
     DoubleLinkedList() {}
 
     /**
+     * @return first element in the list
+     * @throws IndexOutOfBoundsException when the item is null
+    */
+    public T getFirst(){
+        if (last == null) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            return last.object;
+        }
+    }
+
+    /**
+     * @return last element in the list
+     * @throws IndexOutOfBoundsException when the item is null
+    */
+    public T getLast(){
+        if (last == null) {
+            throw new IndexOutOfBoundsException();
+        } else {
+            return last.object;
+        }
+    }
+
+    /**
+     * @return the size of the list as an integer
+    */
+    public int getSize(){
+        return size;
+    }
+
+    /**
      * Node<T> class which is used to store the object and 
      * to realize links between objects
      * 
