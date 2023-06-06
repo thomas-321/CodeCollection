@@ -14,6 +14,46 @@ public class DoubleLinkedList<T> {
     DoubleLinkedList() {}
 
     /**
+     * Function splits the list in 2 and depending on the requested index and list size 
+     * decides to loop from the front or from the back
+     * @throws IndexOutOfBoundsException when there isn't an item at the requested index
+    */
+    public int add(T object, int index){
+        if (!(index < size)){
+            throw new IndexOutOfBoundsException();
+        }
+        if (index < size / 2){
+            return addStartAtFirst();
+        } else {
+            return addStartAtLast();
+        }
+    }
+    
+    /**
+     * function loops back starting at the last node until the requested index is reached
+     * inserts the object in the requested index
+     * @return the index in which the object is placed
+    */
+    private int addStartAtFirst(){
+
+        return -1;
+    }
+
+    /**
+     * function loops forward starting at the first node until the requested index is reached
+     * inserts the object in the requested index
+     * @return the index in which the object is placed
+    */
+    private int addStartAtLast(){
+
+        return -1;
+    }
+
+
+
+
+
+    /**
      * Function adds the given item to the front of the list
      * @return the index in which the item is saved
     */
