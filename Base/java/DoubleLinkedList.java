@@ -31,9 +31,7 @@ public class DoubleLinkedList<T> {
         if (index < size / 2){
             return addStartAtFirst(object, index);
         } else {
-            // return addStartAtLast(object, index);
-            return addStartAtFirst(object, index); // Temp!! until addStartAtLast() is coded
-
+            return addStartAtLast(object, index);
         }
     }
     
@@ -60,14 +58,18 @@ public class DoubleLinkedList<T> {
      * inserts the object in the requested index
      * @return the index in which the object is placed
     */
-    private int addStartAtLast(T object, int index){
+    public int addStartAtLast(T object, int index){
+        Node<T> node = last;
+        for (int i = size-1; i > index; i--){
+            node = node.back;
+        }
+        Node<T> newNode = new Node<>(object, node.back, node);
 
-        return -1;
+        node.back.next = newNode;
+        node.back = newNode;
+        size++;
+        return index;
     }
-
-
-
-
 
     /**
      * Function adds the given item to the front of the list
@@ -154,7 +156,7 @@ public class DoubleLinkedList<T> {
     */
     public T getFirst(){
         if (last == null) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("The list is empty");
         } else {
             return last.object;
         }
@@ -166,7 +168,7 @@ public class DoubleLinkedList<T> {
     */
     public T getLast(){
         if (last == null) {
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("The list is empty");
         } else {
             return last.object;
         }
