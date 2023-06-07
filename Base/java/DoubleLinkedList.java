@@ -19,13 +19,21 @@ public class DoubleLinkedList<T> {
      * @throws IndexOutOfBoundsException when there isn't an item at the requested index
     */
     public int add(T object, int index){
-        if (!(index < size)){
-            throw new IndexOutOfBoundsException();
+        if (index > size){
+            throw new IndexOutOfBoundsException("Index out of range: " + index + "! last possible index = " + size);
+        }
+        if(index == size){
+            return addLast(object);
+        }
+        if (index == 0){
+            return addFirst(object);
         }
         if (index < size / 2){
-            return addStartAtFirst();
+            return addStartAtFirst(object, index);
         } else {
-            return addStartAtLast();
+            // return addStartAtLast(object, index);
+            return addStartAtFirst(object, index); // Temp!! until addStartAtLast() is coded
+
         }
     }
     
@@ -34,9 +42,17 @@ public class DoubleLinkedList<T> {
      * inserts the object in the requested index
      * @return the index in which the object is placed
     */
-    private int addStartAtFirst(){
+    public int addStartAtFirst(T object, int index){
+        Node<T> node = first;
+        for (int i = 0; i < index; i++){
+            node = node.next;
+        }
+        Node<T> newNode = new Node<>(object, node.back, node);
 
-        return -1;
+        node.back.next = newNode;
+        node.back = newNode;
+        size++;
+        return index;
     }
 
     /**
@@ -44,7 +60,7 @@ public class DoubleLinkedList<T> {
      * inserts the object in the requested index
      * @return the index in which the object is placed
     */
-    private int addStartAtLast(){
+    private int addStartAtLast(T object, int index){
 
         return -1;
     }
