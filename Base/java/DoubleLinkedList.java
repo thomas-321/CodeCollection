@@ -186,12 +186,12 @@ public class DoubleLinkedList<T> {
      * to realize links between objects
      * 
     */
-    private class Node<T> {
-        private T object = null;
-        private Node<T> back = null;
-        private Node<T> next = null;
+    private class Node<N> {
+        private N object = null;
+        private Node<N> back = null;
+        private Node<N> next = null;
     
-        Node(T object, Node<T> back, Node<T> next){
+        Node(N object, Node<N> back, Node<N> next){
             this.object = object;
             this.back = back;
             this.next = next;
