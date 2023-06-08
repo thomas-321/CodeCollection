@@ -26,7 +26,7 @@ public class DoubleLinkedList<T> {
             return addLast(object);
         }
         if (index == 0){
-            return addFirst(object);
+            return addFront(object);
         }
         if (index < size / 2){
             return addStartAtFirst(object, index);
@@ -40,7 +40,7 @@ public class DoubleLinkedList<T> {
      * inserts the object in the requested index
      * @return the index in which the object is placed
     */
-    public int addStartAtFirst(T object, int index){
+    private int addStartAtFirst(T object, int index){
         Node<T> node = first;
         for (int i = 0; i < index; i++){
             node = node.next;
@@ -58,7 +58,7 @@ public class DoubleLinkedList<T> {
      * inserts the object in the requested index
      * @return the index in which the object is placed
     */
-    public int addStartAtLast(T object, int index){
+    private int addStartAtLast(T object, int index){
         Node<T> node = last;
         for (int i = size-1; i > index; i--){
             node = node.back;
@@ -75,7 +75,7 @@ public class DoubleLinkedList<T> {
      * Function adds the given item to the front of the list
      * @return the index in which the item is saved
     */
-    public int addFirst(T object){
+    public int addFront(T object){
         Node<T> newNode= new Node<>(object, null, first);
         Node<T> oldNode = first;
         if (last == null){
@@ -117,7 +117,7 @@ public class DoubleLinkedList<T> {
     */
     public T get(int index){
         if (first == null || last == null || !(index < size)){
-            throw new IndexOutOfBoundsException();
+            throw new IndexOutOfBoundsException("Index " + index + " does not contain an item");
         }
         if (index < size / 2){
             return getFromFront(index);
